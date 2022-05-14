@@ -5,7 +5,8 @@ const Spinner = () => {
   return (
     <Loader
         visible
-        indicatorStyle={{zIndex:1000}}
+        color='black'
+        
     />
   )
 }

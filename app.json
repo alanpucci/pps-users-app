@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "users-app",
-    "slug": "users-app",
+    "name": "Usuarios",
+    "slug": "Usuarios",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

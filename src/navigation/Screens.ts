@@ -1,5 +1,6 @@
 export enum Screens{
     LOGIN='Login',
-    LOGIN_SUCCESS='LoginSuccess',
-    REGISTER='Register'
+    REGISTER='Register',
+    ADD_USER='AddUser',
+    LIST_USERS='ListUsers'
 }

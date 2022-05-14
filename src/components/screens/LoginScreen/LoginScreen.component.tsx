@@ -103,13 +103,13 @@ const LoginScreen:FC<LoginScreenProps> = ({navigation}) => {
 	return (
 		<StyledView colors={['#67B26F', '#4ca2cd']}>
             {data.loading && <Spinner />}
+            <Logo />
+            <LoginController openRegister={()=>handleModal()} fastSignIn={handleFastSignIn} handleSubmit={handleSubmit(handleSignIn)} control={control} />
+            <RegisterController isVisible={isVisible} handleSubmit={handleSubmit(handleSignUp)} closeModal={()=>handleModal()} control={control} />
             <FloatingAction distanceToEdge={{horizontal:10, vertical:10 }} showBackground
                 actions={actions}
                 onPressItem={name => handleFastLogin(name)}
             />
-            <Logo />
-            <LoginController openRegister={()=>handleModal()} fastSignIn={handleFastSignIn} handleSubmit={handleSubmit(handleSignIn)} control={control} />
-            <RegisterController isVisible={isVisible} handleSubmit={handleSubmit(handleSignUp)} closeModal={()=>handleModal()} control={control} />
         </StyledView>
 	);
 };
