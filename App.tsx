@@ -9,23 +9,47 @@ import AnimatedLottieView from 'lottie-react-native';
 import FlashMessage from 'react-native-flash-message';
 import { Image, Text, View } from 'react-native';
 import { LogBox } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
 export default function App() {
   const store = generateStore();
   const [lottieLoad, setLottieLoad] = useState(false);
+  const [appIsReady, setAppIsReady] = useState(false);
   const [fontsLoaded] = useFonts({
     Knewave: require('./assets/fonts/Knewave-Regular.ttf'),
     IrishGrover: require('./assets/fonts/IrishGrover-Regular.ttf')
     });
 
+
+    useEffect(() => {
+      async function prepare() {
+        try {
+          await SplashScreen.preventAutoHideAsync();
+          await new Promise(resolve => setTimeout(resolve, 500));
+        } catch (e) {
+          console.warn(e);
+        } finally {
+          // Tell the application to render
+          setAppIsReady(true);
+        }
+      }
+  
+      prepare();
+    }, []);
     
     useEffect(()=>{
-      setTimeout(() => {
-        setLottieLoad(true)
-      }, 6000);
-    },[])
+      if(appIsReady){
+        (async ()=>{
+          await SplashScreen.hideAsync();
+          setTimeout(() => {
+            setLottieLoad(true)
+          }, 6000);
+        })()
+      }
+    },[appIsReady])
     if(!fontsLoaded) return <Image style={{height:'100%', width:'100%'}} source={require('./assets/splash.png')} />;
     
   if(!lottieLoad){

@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 export const StyledLinear = styled(LinearGradient)`
     align-items:center;
-    height:${Dimensions.get('screen').height}; 
+    min-height:${Dimensions.get('screen').height}; 
     width:100%; 
     padding:20px;
 `

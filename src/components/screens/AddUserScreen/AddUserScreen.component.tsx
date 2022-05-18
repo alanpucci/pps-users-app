@@ -80,7 +80,8 @@ const AddUserScreen = () => {
       return;
     }
     if(values.password!==values.passwordRepeat){
-      errorHandler('pass-dif');
+      errorHandler('pass-diff');
+      return;
     }
     setLoading(true)
     try {
@@ -103,6 +104,12 @@ const AddUserScreen = () => {
         description: "Usuario creado exitosamente",
     });
     reset();
+    setValue("lastName","")
+    setValue("name","")
+    setValue("dni",null)
+    setValue("email","")
+    setValue("password","")
+    setValue("passwordRepeat","")
     setImage("");
     } catch (error:any) {
       errorHandler(error.code);
@@ -142,12 +149,12 @@ const AddUserScreen = () => {
         <ControlledInput control={control} name="lastName" placeholder='Apellido' />
         <ControlledInput control={control} name="name" placeholder='Nombres' />
         <ControlledInput control={control} name="dni" placeholder='Documento' keyboardType='number-pad' />
-        <ControlledInput control={control} name="email" placeholder='E-mail' keyboardType='email-address' />
+        <ControlledInput control={control} name="email" placeholder='Correo electrónico' keyboardType='email-address' />
         <ControlledPasswordInput control={control} name="password" placeholder='Contraseña' />
         <ControlledPasswordInput control={control} name="passwordRepeat" placeholder='Repetir contraseña' />
         <Button onPress={handleSubmit(onSubmit)}>Crear usuario</Button>
         <Button variant='secondary' onPress={handleOpenQR}>Escanear QR</Button>
-        <View style={{marginBottom:30}}>
+        <View style={{marginVertical:30}}>
           <Button variant='secondary' onPress={handleSignOut}>Cerrar sesión</Button>
         </View>
       </LinearGradient>

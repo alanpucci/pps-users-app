@@ -87,7 +87,7 @@ const LoginScreen:FC<LoginScreenProps> = ({navigation}) => {
           position: 1
         },
         {
-          text: "Tecnico",
+          text: "Técnico",
           name: "tecnico",
           icon: require('../../../../assets/user.png'),
           position: 2
